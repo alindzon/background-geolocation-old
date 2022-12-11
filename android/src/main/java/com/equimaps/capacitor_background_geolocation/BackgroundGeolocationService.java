@@ -80,26 +80,30 @@ public class BackgroundGeolocationService extends Service {
                 final String id,
                 Notification backgroundNotification,
                 float distanceFilter,
-                long interval,
-                long maxWaitTime,
+                int interval,
+                int maxWaitTime,
                 int numUpdates
         ) {
             FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(
                     BackgroundGeolocationService.this
             );
+            
+            long targetIntervalMillis = interval*1000;
+            long fastestIntervalMillis = targetIntervalMillis;
+            if (interval>60) {
+                Logger.debug("interval over 60 seconds");
+                fastestIntervalMillis = fastestIntervalMillis-60000;//remove one minute
+            }            
+            
             LocationRequest locationRequest = new LocationRequest();
             locationRequest.setMaxWaitTime(maxWaitTime);
             
             locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
             locationRequest.setSmallestDisplacement(distanceFilter);
+            locationRequest.setInterval(targetIntervalMillis); // target interval 
+            locationRequest.setFastestInterval(fastestIntervalMillis);
             if (numUpdates>0) locationRequest.setNumUpdates(numUpdates);// used to stop after numUpdates
-            locationRequest.setInterval(interval); // target interval 
-     
-            if (interval>60000L) {
-                Logger.debug("interval over 60000");
-                locationRequest.setFastestInterval(interval-60000L);
-            }
-            
+           
             LocationCallback callback = new LocationCallback(){
                 @Override
                 public void onLocationResult(LocationResult locationResult) {
