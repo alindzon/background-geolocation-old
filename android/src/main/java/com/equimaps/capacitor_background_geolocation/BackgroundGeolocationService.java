@@ -91,7 +91,7 @@ public class BackgroundGeolocationService extends Service {
             // deprecated locationRequest.setInterval(interval);
             locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
             // deprecated locationRequest.setSmallestDisplacement(distanceFilter);
-            locationRequest.setSmallestDispalcementMeters(distanceFilter);
+            locationRequest.setSmallestDisplacementMeters(distanceFilter);
             locationRequest.setIntervalMillis(interval);
             locationRequest.setMaxUpdateDelayMillis(maxWaitTime);
 
