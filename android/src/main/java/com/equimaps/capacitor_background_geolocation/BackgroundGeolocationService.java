@@ -81,7 +81,8 @@ public class BackgroundGeolocationService extends Service {
                 Notification backgroundNotification,
                 float distanceFilter,
                 long interval,
-                long maxWaitTime
+                long maxWaitTime,
+                int numUpdates
         ) {
             FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(
                     BackgroundGeolocationService.this
@@ -91,7 +92,7 @@ public class BackgroundGeolocationService extends Service {
             locationRequest.setFastestInterval(interval);
             locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
             locationRequest.setSmallestDisplacement(distanceFilter);
-
+            locationRequest.setNumUpdates(numUpdates);// used to stop after numUpdates
 
             LocationCallback callback = new LocationCallback(){
                 @Override
