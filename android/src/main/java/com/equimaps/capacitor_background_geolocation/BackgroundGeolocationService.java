@@ -94,7 +94,7 @@ public class BackgroundGeolocationService extends Service {
             locationRequest.setSmallestDisplacement(distanceFilter);
             if (numUpdates>0) locationRequest.setNumUpdates(numUpdates);// used to stop after numUpdates
             locationRequest.setInterval(interval); // target interval 
-            Logger.debug("interval {}",interval);
+            Logger.debug("interval {}",interval.toString());
             if (interval>60000L) {
                 interval=interval-60000L;
                 locationRequest.setFastestInterval(interval);
