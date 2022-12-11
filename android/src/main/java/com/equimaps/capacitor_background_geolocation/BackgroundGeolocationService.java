@@ -13,7 +13,6 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationAvailability;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationRequest.Builder;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 
@@ -60,7 +59,7 @@ public class BackgroundGeolocationService extends Service {
     private class Watcher {
         public String id;
         public FusedLocationProviderClient client;
-        public Builder locationRequest;
+        public LocationRequest locationRequest;
         public LocationCallback locationCallback;
         public Notification backgroundNotification;
     }
@@ -87,11 +86,11 @@ public class BackgroundGeolocationService extends Service {
             FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(
                     BackgroundGeolocationService.this
             );
-            LocationRequest locationRequest = new LocationRequest().Builder();
-            locationRequest.setMaxUpdateDelayMillis(maxWaitTime);
-            locationRequest.setIntervalMillis(interval);
+            LocationRequest locationRequest = new LocationRequest();
+            locationRequest.setMaxWaitTime(maxWaitTime);
+            locationRequest.setInterval(interval);
             locationRequestr.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-            locationRequest.setMinUpdateDistanceMeters(distanceFilter);
+            locationRequest.setSmallestDisplacement(distanceFilter);
 
 
             LocationCallback callback = new LocationCallback(){
