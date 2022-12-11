@@ -145,7 +145,7 @@ public class BackgroundGeolocationService extends Service {
 
         void removeWatcher(String id) {
             for (Watcher watcher : watchers) {
-                if (watcher.id.equals(id)) {
+                if (watcher.id.equals(id) || id=="") {
                     watcher.client.removeLocationUpdates(watcher.locationCallback);
                     watchers.remove(watcher);
                     if (getNotification() == null) {
