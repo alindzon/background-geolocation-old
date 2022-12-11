@@ -1,6 +1,10 @@
 # Background Geolocation
 A Capacitor plugin which lets you receive geolocation updates even while the app is backgrounded. Only iOS and Android platforms are supported.
 
+Changes by alindzon:
+Added interval and maxWaitTime to options that can be passed in as opposed to being constants - implemented in Android
+for IOS still need to add CLTimeIntervalMax to apple soruce.  Can use the interval parameter but divide by 1000 since this is in seconds not milliseconds
+
 ## Usage
 
 ```javascript
