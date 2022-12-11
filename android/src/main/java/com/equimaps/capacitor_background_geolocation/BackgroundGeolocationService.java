@@ -92,7 +92,7 @@ public class BackgroundGeolocationService extends Service {
             locationRequest.setFastestInterval(interval);
             locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
             locationRequest.setSmallestDisplacement(distanceFilter);
-            locationRequest.setNumUpdates(numUpdates);// used to stop after numUpdates
+            if (numUpdates>0) locationRequest.setNumUpdates(numUpdates);// used to stop after numUpdates
 
             LocationCallback callback = new LocationCallback(){
                 @Override
