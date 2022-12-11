@@ -143,7 +143,7 @@ public class BackgroundGeolocation extends Plugin {
                 backgroundNotification,
                 call.getFloat("distanceFilter", 0f),
                 call.getInt("interval",1000),
-                call.getInt("maxWaitTime,1000)
+                call.getInt("maxWaitTime",1000)
         );
     }
 
