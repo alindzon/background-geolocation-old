@@ -97,14 +97,9 @@ public class BackgroundGeolocationService extends Service {
             Logger.debug("interval {}",interval);
             if (interval>60000L) {
                 interval=interval-60000L;
-                locationRequest.setFastestInterval(interval)
+                locationRequest.setFastestInterval(interval);
             }
             
-            //if (interval>10001L) locationRequest.setFastestInterval(interval-10000L);// 10 seconds faster than target
-            //else 
-            
-            // locationRequest.setFastestInterval(interval);
-
             LocationCallback callback = new LocationCallback(){
                 @Override
                 public void onLocationResult(LocationResult locationResult) {
