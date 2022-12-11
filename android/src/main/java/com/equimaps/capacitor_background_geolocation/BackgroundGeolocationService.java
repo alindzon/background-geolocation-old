@@ -13,6 +13,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationAvailability;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationRequest.Builder;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 
@@ -59,7 +60,7 @@ public class BackgroundGeolocationService extends Service {
     private class Watcher {
         public String id;
         public FusedLocationProviderClient client;
-        public LocationRequest locationRequest;
+        public Builder locationRequest;
         public LocationCallback locationCallback;
         public Notification backgroundNotification;
     }
