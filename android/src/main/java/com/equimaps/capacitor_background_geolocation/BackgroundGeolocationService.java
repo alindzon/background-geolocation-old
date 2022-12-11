@@ -142,7 +142,7 @@ public class BackgroundGeolocationService extends Service {
                 );
             } catch (SecurityException ignore) {}
         }
-
+        // remove watcher with id=id or if id="" remove all watchers
         void removeWatcher(String id) {
             for (Watcher watcher : watchers) {
                 if (watcher.id.equals(id) || id=="") {
