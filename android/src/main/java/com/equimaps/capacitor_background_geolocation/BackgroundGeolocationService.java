@@ -95,10 +95,9 @@ public class BackgroundGeolocationService extends Service {
             if (numUpdates>0) locationRequest.setNumUpdates(numUpdates);// used to stop after numUpdates
             locationRequest.setInterval(interval); // target interval 
      
-            //if (interval>60000L) {
-            //    interval=interval-60000L;
-            //    locationRequest.setFastestInterval(interval);
-            //}
+            if (interval>60000L) {
+                locationRequest.setFastestInterval(interval-60000L);
+            }
             
             LocationCallback callback = new LocationCallback(){
                 @Override
