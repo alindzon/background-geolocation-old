@@ -94,6 +94,7 @@ public class BackgroundGeolocation : CAPPlugin, CLLocationManagerDelegate {
                 ? kCLLocationAccuracyBestForNavigation
                 : kCLLocationAccuracyBest
             )
+            manager.CLTimeIntervalMax = call.getDouble("interval")
             manager.distanceFilter = call.getDouble(
                 "distanceFilter"
             ) ?? kCLDistanceFilterNone;
