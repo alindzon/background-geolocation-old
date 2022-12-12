@@ -94,7 +94,7 @@ public class BackgroundGeolocation : CAPPlugin, CLLocationManagerDelegate {
                 ? kCLLocationAccuracyBestForNavigation
                 : kCLLocationAccuracyBest
             )
-            manager.CLTimeIntervalMax = call.getDouble("interval")
+            //how do we set interval between readings?  manager.?? = call.getDouble("interval")
             manager.distanceFilter = call.getDouble(
                 "distanceFilter"
             ) ?? kCLDistanceFilterNone;
